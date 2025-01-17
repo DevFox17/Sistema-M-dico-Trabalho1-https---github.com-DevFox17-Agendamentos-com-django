@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+ <html lang="pt-br">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Medic Mais</title>
+    <link rel="stylesheet" type="text/css" href="{%static 'hospital/style.css'%}">
+ </head>
+ <body>
+    <h1>Agendamentos</h1>
+    <a href="{% url 'criar_agendamento' %}">Novo Agendamento</a>
+    <table border="1">
+        <tr>
+            <th>Medico</th>
+            <th>Paciente</th>
+            <th>Data e Hora</th>
+        </tr>
+        {% for agendamento in agendamentos %}
+        <tr>
+            <td>{{ agendamento.medico.nome }}</td>
+            <td>{{ agendamento.paciente.nome }}</td>
+            <td>{{ agendamento.data_hora }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+ </body>
+ </html>
