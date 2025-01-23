@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Exclusão</title>
+</head>
+<body>
+    <h1>Confirmar Exclusão</h1>
+    <p>Tem certeza que deseja excluir este paciente? <strong>{{ paciente.nome }}</strong> </p>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="motivo">Motivo da Exclusão: </label><br>
+        <textarea name="motivo" id="motivo" cols="30" rows="10" required></textarea><br>
+        <button type="submit" >Excluir</button>
+        <a href="{% url 'listar_agendamentos' %}">Cancelar</a>
+    </form>
+</body>
+</html>
