@@ -6,13 +6,13 @@ from .models import RegistroExclusao
 
 def criar_agendamento(request):
     if request.method == 'POST':
-        form = AgendamentoForm(request.POST)
-        if form.is_valid():
-            form.save()
+        form = AgendamentoForm(request.POST)    # Como o próprio nome fala ele cria um agendamento
+        if form.is_valid():                     # verifica se o formiulário foi preenchido corretamente
+            form.save()                         # salva o formulário e retorna a lista de agendametos (página inicial)
             return redirect('listar_agendamentos')
     else:
-        form = AgendamentoForm()
-    return render(request, 'criar_agendamento.html', {'form': form})
+        form = AgendamentoForm()                                        # se o formulário nao foi preenchido corretamente ele renorna em cima
+    return render(request, 'criar_agendamento.html', {'form': form})    # renderiza a pagina com o formulário
 
 def listar_agendamentos(request):
     agendamentos = Agendamento.objects.all()
@@ -23,7 +23,7 @@ def deletar_paciente(request, paciente_id):
 
     if request.method == 'POST':
         motivo = request.POST['motivo']
-        RegistroExclusao.objects.create(paciente=paciente, motivo=motivo)
+        RegistroExclusao.objects.create(paciente=paciente, motivo=motivo)          # cria um registro de exclusão falando o motivo
         paciente.delete()
         return redirect('listar_agendamentos')
 

@@ -8,3 +8,6 @@ urlpatterns = [
     path('deletar_paciente/<int:paciente_id>/', views.deletar_paciente, name='deletar_paciente'),
 ]
     
+
+    # tem que digitar no navegador http://127.0.0.1:8000/hospital/ ex:agendamentos ou agendamentos/novo
+    # mas só de gitar /hospital/agendamentos o código já funciona
